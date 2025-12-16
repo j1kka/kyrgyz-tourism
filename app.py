@@ -3,37 +3,36 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def home():
+def index():
     return render_template("index.html")
 
 @app.route("/hotels")
 def hotels():
-    hotels = [
-        {"name": "Hyatt Regency Bishkek", "city": "Bishkek", "price": "$120", "rating": "5★"},
-        {"name": "Plaza Hotel Bishkek", "city": "Bishkek", "price": "$70", "rating": "4★"},
-        {"name": "Karagat Hotel", "city": "Issyk-Kul", "price": "$50", "rating": "4★"},
-        {"name": "Sunrise Guest House", "city": "Karakol", "price": "$30", "rating": "3★"},
+    hotels_data = [
+        {"name": "Hotel Asia", "location": "Bishkek", "stars": 4},
+        {"name": "Plaza Hotel", "location": "Osh", "stars": 5},
+        {"name": "Rixos Hotel", "location": "Issyk-Kul", "stars": 5},
+        {"name": "Guesthouse Kyrgyzstan", "location": "Naryn", "stars": 3}
     ]
-    return render_template("hotels.html", hotels=hotels)
+    return render_template("hotels.html", hotels=hotels_data)
 
 @app.route("/transport")
 def transport():
-    transport = [
-        {"type": "Namba Taxi", "price": "100–300 KGS"},
-        {"type": "Yandex Go", "price": "120–350 KGS"},
-        {"type": "Marshrutka", "price": "20–50 KGS"},
-        {"type": "Intercity Taxi", "price": "500–800 KGS"},
+    transport_data = [
+        {"type": "Taxi", "city": "Bishkek", "info": "Средняя стоимость: 200-400 KGS"},
+        {"type": "Bus", "city": "Osh", "info": "Маршрутки и автобусы по всему городу"},
+        {"type": "Airport Shuttle", "city": "Bishkek", "info": "Связь с международным аэропортом"}
     ]
-    return render_template("transport.html", transport=transport)
+    return render_template("transport.html", transports=transport_data)
 
 @app.route("/reviews")
 def reviews():
-    reviews = [
-        {"user": "Anna", "text": "Amazing nature and friendly people!", "rating": "5/5"},
-        {"user": "John", "text": "Cheap transport and good hotels.", "rating": "4/5"},
-        {"user": "Aida", "text": "Issyk-Kul is beautiful!", "rating": "5/5"},
+    reviews_data = [
+        {"user": "Alice", "comment": "Beautiful country, very friendly people!", "place": "Issyk-Kul"},
+        {"user": "Bob", "comment": "Hotels were clean and comfortable.", "place": "Bishkek"},
+        {"user": "Charlie", "comment": "Transport is cheap and reliable.", "place": "Osh"}
     ]
-    return render_template("reviews.html", reviews=reviews)
+    return render_template("reviews.html", reviews=reviews_data)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)

@@ -6,35 +6,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<header>
-    <h1>Transport in Kyrgyzstan</h1>
+    <h1>Transport</h1>
     <nav>
         <a href="/">Home</a> |
         <a href="/hotels">Hotels</a> |
-        <a href="/transport">Transport</a> |
         <a href="/reviews">Reviews</a>
     </nav>
-</header>
-<main>
-    <h2>City and Intercity Transport</h2>
-    <ul>
-        <li>Marshrutki (minibuses) — cheap and common inside cities.</li>
-        <li>Bus & trolleybus — public options in major cities like Bishkek.</li>
-        <li>Taxi Apps — Yandex Go, NambaTaxi widely used.</li>
-        <li>Intercity shared taxis — Bishkek ↔ Karakol / Issyk-Kul etc.</li>
-    </ul>
 
-    <h2>Transport Routes Map</h2>
-    <div style="width: 100%; height: 450px;">
-        <iframe
-            src="https://www.google.com/maps/d/embed?mid=1eEPsi8jgMjVFx_ieXM8FpV_oa2D5rzQ&ehbc=2E312F"
-            width="100%"
-            height="450"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy">
-        </iframe>
-    </div>
-</main>
+    <ul>
+        {% for t in transports %}
+        <li>{{ t.type }} in {{ t.city }} - {{ t.info }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

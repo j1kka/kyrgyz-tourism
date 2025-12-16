@@ -6,62 +6,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<header>
-    <h1>Hotels in Kyrgyzstan</h1>
+    <h1>Hotels</h1>
     <nav>
         <a href="/">Home</a> |
-        <a href="/hotels">Hotels</a> |
         <a href="/transport">Transport</a> |
         <a href="/reviews">Reviews</a>
     </nav>
-</header>
-<main>
-    <h2>Popular Hotels</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>City</th>
-            <th>Approx. Price</th>
-            <th>Note</th>
-        </tr>
-        <tr>
-            <td>Orion Hotel</td>
-            <td>Bishkek</td>
-            <td>$$$</td>
-            <td>Highly rated in Bishkek</td>
-        </tr>
-        <tr>
-            <td>Novotel Bishkek City Center</td>
-            <td>Bishkek</td>
-            <td>$$$$</td>
-            <td>Central location, good services</td>
-        </tr>
-        <tr>
-            <td>Karven Four Seasons</td>
-            <td>Cholpon-Ata</td>
-            <td>$$$$</td>
-            <td>Popular on Issyk-Kul lakeside</td>
-        </tr>
-        <tr>
-            <td>Mixx Hotel</td>
-            <td>Karakol</td>
-            <td>$$</td>
-            <td>Good base for Issyk-Kul region</td>
-        </tr>
-    </table>
 
-    <h2>Hotels Map</h2>
-    <div style="width: 100%; height: 450px;">
-        <iframe
-            src="https://www.google.com/maps/d/embed?mid=1eEPsi8jgMjVFx_ieXM8FpV_oa2D5rzQ&ehbc=2E312F"
-            width="100%"
-            height="450"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy">
-        </iframe>
-    </div>
-</main>
+    <ul>
+        {% for hotel in hotels %}
+        <li>{{ hotel.name }} - {{ hotel.location }} - {{ hotel.stars }} stars</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
-
